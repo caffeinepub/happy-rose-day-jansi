@@ -24,6 +24,14 @@ export default function Page7Replay() {
             </p>
           </div>
 
+          <div className="closing-message animate-slide-up-slow">
+            <p className="text-lg md:text-xl font-serif text-rose-600 leading-relaxed">
+              If today made you smile even a little,
+              <br />
+              then it was worth making.
+            </p>
+          </div>
+
           <Button
             onClick={replay}
             size="lg"

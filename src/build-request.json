@@ -1,76 +1,131 @@
 {
   "kind": "build_request",
-  "title": "Fix global background music by switching from cani.mp3 to cani.mp4",
-  "priority": "high",
+  "title": "Add global Day/Night mood toggle + emotional callback lines to the Rose Day microsite",
+  "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-15",
-      "text": "Update the global audio implementation to load and play the provided audio file `cani.mp4` (instead of `cani.mp3`) so that music is audible when the user presses the Page 1 music start button or the global play/pause toggle.",
+      "id": "REQ-17",
+      "text": "Add a global Day/Night Mood Toggle that is always visible across all 7 pages and is placed opposite the existing global music toggle (e.g., mood toggle on top-left, music toggle on top-right) so the two controls visually balance each other.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4",
-          "msg-8",
-          "msg-10",
-          "msg-12"
+          "msg-user-upgrade-request",
+          "msg-user-yes"
         ],
         "quotes": [
-          "music is not working  ,other things is fine",
-          "slient everywhere and not hearing anyhthing",
-          "cani.mp4",
+          "Add a premium Day/Night Mood Toggle button in the global header area of the website, placed opposite to the music on/off toggle icon so they visually balance each other.",
+          "The Mood Toggle works across all pages, including: Welcome page ... Final message + replay page",
           "yes"
         ]
       },
       "acceptanceCriteria": [
-        "The app requests `/assets/cani.mp4` for playback (no references to `/assets/cani.mp3` remain in the runtime audio path).",
-        "On desktop (laptop) Chrome/Edge, clicking “Let the roses sing for us 🎶” on Page 1 starts audible playback.",
-        "Clicking the fixed global audio toggle starts/pauses audible playback and updates its visual state accordingly.",
-        "Audio remains user-initiated only (no autoplay on initial page load or after replay).",
-        "Audio continues seamlessly across page navigation once started (no restart on page changes unless the user pauses/plays)."
+        "On every page (1–7), both the music toggle and the mood toggle are visible and clickable without overlapping content.",
+        "On mobile, both toggles remain touch-friendly (not too small) and stay within the viewport.",
+        "On desktop, toggles are aligned cleanly in the top corner area and do not overlap the main content.",
+        "No hover effects on either toggle cause shrinking or bouncing/jumping behavior."
       ]
     },
     {
-      "id": "REQ-16",
-      "text": "Ensure the project’s documented/declared allowed static asset list reflects `cani.mp4` as the required audio asset (replacing references to `cani.mp3`) wherever the app’s constraints or copy mention the audio filename.",
+      "id": "REQ-18",
+      "text": "Implement Day (default) and Night mode styling as a smooth crossfade theme transition across the entire app, using a single global theme state (persisted for the session) that updates the page background gradients, glassmorphism panel styling, and text colors while maintaining readability and accessibility.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-10"
+          "msg-user-upgrade-request"
         ],
         "quotes": [
-          "cani.mp4"
+          "Day Mode (Default): Background: blush pink + soft white gradient ... Panels/cards: off-white glassmorphism ... Text: deep rose + soft charcoal",
+          "Night Mode: Background transitions to lavender + deep rose gradient ... Panels/cards: slightly darker glassmorphism with soft blur ... Text: off-white + soft pastel rose highlights",
+          "Smooth animated crossfade between day and night themes. No flashing, no harsh contrast changes. Maintain readability and accessibility in both modes on mobile and desktop"
         ]
       },
       "acceptanceCriteria": [
-        "Any user-facing or developer-facing text in the repo that specifies the required audio asset name (for this microsite) refers to `cani.mp4` (not `cani.mp3`).",
-        "No user-facing text changes introduce non-English wording."
+        "Day mode is the default on first load.",
+        "Toggling mood updates the global look (background, panels, typography colors) across all pages immediately without navigation.",
+        "The theme transition animates smoothly (crossfade/soft transition) without flashes or harsh contrast jumps.",
+        "Cards/panels remain glassmorphic in both modes: Day = lighter/off-white; Night = slightly darker with soft blur, still readable.",
+        "All primary text remains legible in both modes (no low-contrast combinations)."
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "text": "Update the global background effects to adapt to Day vs Night mode: keep floating hearts in both modes, but in Night mode make them softer, slower, and slightly dimmer; add subtle star-like sparkles and soft glowing particles in Night mode; keep Day mode sparkles warm-toned and very subtle; ensure effects remain lightweight and never block interactions.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-upgrade-request"
+        ],
+        "quotes": [
+          "Hearts and sparkles: very subtle, warm tone",
+          "Add subtle star-like sparkles and soft glowing particles in the background",
+          "Floating hearts remain but become softer, slower, and slightly dimmer",
+          "Effects must be lightweight, not block content interaction, and remain responsive."
+        ]
+      },
+      "acceptanceCriteria": [
+        "In both modes, the background effects do not capture pointer events and do not interfere with clicking/scrolling.",
+        "Night mode visibly differs from Day mode via dimmer/slower hearts and star-like sparkles/particles.",
+        "Day mode sparkles remain warm-toned and subtle (no distracting brightness).",
+        "Animations remain smooth and premium (no jarring movement)."
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "text": "Add the subtle emotional callback line somewhere within the existing flow (choose a fitting location such as Page 3 Bouquet Builder or Page 6 Final Message) with soft serif styling, smaller than main headings, and a gentle fade-in when the section appears: “Somewhere in this little garden, Jansi, there’s a piece of my heart.” The line’s color must harmonize with the current mood (rose-toned in Day mode; soft off-white in Night mode).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-upgrade-request"
+        ],
+        "quotes": [
+          "Add this romantic line somewhere subtle and emotionally fitting within the website flow ... “Somewhere in this little garden, Jansi, there’s a piece of my heart.”",
+          "Soft serif font ... Slightly smaller than main headings ... Gentle fade-in animation when the section appears ... Color should harmonize with the current theme (rose tone in Day mode, soft off-white in Night mode)",
+          "This line should feel like a quiet emotional whisper, not a headline"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The exact line text is present once in the experience flow (not as a main headline).",
+        "The line uses a serif font, is visually smaller than the page’s main heading, and fades in gently when shown.",
+        "In Day mode the line appears in a rose-toned color; in Night mode it switches to soft off-white (or equivalent high-contrast pastel) while remaining readable.",
+        "The placement feels subtle (e.g., below main content within the card/panel), not competing with primary CTAs."
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "text": "On Page 7 (Replay / Ending), add the closing send-off message centered just above the existing “Visit My Rose Garden Again” button, with soft fade-in + slow upward slide animation and a gentle glow behind the text: “If today made you smile even a little,\\nthen it was worth making.”",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-upgrade-request"
+        ],
+        "quotes": [
+          "At the very end of the entire website experience (final page / replay page), add this closing message as the emotional send-off: “If today made you smile even a little,\nthen it was worth making.”",
+          "Centered on the final screen",
+          "Soft fade-in + slow upward slide animation",
+          "Gentle glow behind the text",
+          "Positioned just above the Replay button (“Visit My Rose Garden Again”)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On Page 7, the closing message is displayed above the replay button, centered within the main content card/panel.",
+        "The message uses the exact wording and line break as provided.",
+        "The message animates in with a soft fade-in and slow upward slide and includes a gentle glow effect (not harsh/neon).",
+        "The new message does not cause layout overflow on mobile or desktop and does not push the replay button off-screen."
       ]
     }
   ],
   "constraints": [
-    "Do not introduce audio autoplay; playback must begin only after an explicit user gesture.",
-    "Keep the existing global audio UX (persistent play/pause control available across all pages).",
-    "Do not add or depend on any external images or audio sources; use the provided `/assets/cani.mp4` file.",
-    "Do not modify files under the listed immutable frontend paths (compose instead of editing them).",
-    "Backend remains a single Motoko actor; no backend changes are required for this fix."
+    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, and anything under frontend/src/components/ui.",
+    "Do not break the existing premium romantic ‘Canva-style’ aesthetic, page flow (1→7), or existing animations; these changes must be refinements only.",
+    "Do not introduce any autoplay behavior for audio; music must still start only via user interaction."
   ],
   "nonGoals": [
-    "Adding additional audio tracks, playlists, or volume sliders.",
-    "Implementing third-party audio streaming, analytics, or any external media hosting.",
-    "Changing the 7-page microsite flow, page content, or visual theme beyond what is necessary to make audio work."
+    "No backend (Motoko) changes or new canister methods.",
+    "No new pages or changes to the 7-page navigation structure beyond adding the requested text and theme toggle.",
+    "No external image assets or emoji-based icons for the mood toggle (use CSS/SVG shapes only)."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }

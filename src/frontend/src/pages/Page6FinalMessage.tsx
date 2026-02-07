@@ -21,6 +21,10 @@ export default function Page6FinalMessage() {
             <br />
             Thank you for being someone my heart smiles for.
           </p>
+
+          <p className="text-base md:text-lg font-serif italic callback-line animate-fade-in-gentle mt-8">
+            Somewhere in this little garden, Jansi, there's a piece of my heart.
+          </p>
         </div>
 
         <Button

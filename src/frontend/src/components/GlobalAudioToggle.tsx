@@ -10,7 +10,7 @@ export function GlobalAudioToggle() {
       onClick={toggle}
       variant="outline"
       size="icon"
-      className="fixed top-6 right-6 z-50 glass-panel border-rose-200/30 hover:border-rose-300/50 hover:bg-rose-50/20 transition-all duration-300"
+      className="fixed-toggle-right glass-panel border-rose-200/30 hover:border-rose-300/50 hover:bg-rose-50/20 transition-colors duration-300"
       aria-label={isPlaying ? 'Pause music' : 'Play music'}
     >
       {isPlaying ? (

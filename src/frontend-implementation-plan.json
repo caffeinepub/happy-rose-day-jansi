@@ -1,48 +1,136 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Fix global background music by switching from cani.mp3 to cani.mp4",
+  "title": "Global Day/Night mood toggle, theme crossfade, adaptive background effects, and new emotional lines",
   "requirements": [
     {
-      "id": "REQ-15",
-      "summary": "Switch global audio source to /assets/cani.mp4 and ensure user-initiated, persistent play/pause works across navigation.",
+      "id": "REQ-17",
+      "summary": "Add a global Day/Night mood toggle that is always visible across all 7 pages and visually balanced opposite the existing global music toggle.",
       "acceptanceCriteria": [
-        "The app requests `/assets/cani.mp4` for playback (no references to `/assets/cani.mp3` remain in the runtime audio path).",
-        "On desktop (laptop) Chrome/Edge, clicking “Let the roses sing for us 🎶” on Page 1 starts audible playback.",
-        "Clicking the fixed global audio toggle starts/pauses audible playback and updates its visual state accordingly.",
-        "Audio remains user-initiated only (no autoplay on initial page load or after replay).",
-        "Audio continues seamlessly across page navigation once started (no restart on page changes unless the user pauses/plays)."
+        "On every page (1–7), both the music toggle and the mood toggle are visible and clickable without overlapping content.",
+        "On mobile, both toggles remain touch-friendly (not too small) and stay within the viewport.",
+        "On desktop, toggles are aligned cleanly in the top corner area and do not overlap the main content.",
+        "No hover effects on either toggle cause shrinking or bouncing/jumping behavior."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/audio/GlobalAudioProvider.tsx",
-          "operation": "modify",
-          "description": "Update the constructed Audio element to load `/assets/cani.mp4` instead of `/assets/cani.mp3`, and tighten playback state syncing (e.g., reflect actual media play/pause events and handle failed play promises) while keeping playback strictly user-initiated and the Audio instance persistent for seamless cross-page playback."
+          "path": "frontend/src/components/GlobalMoodToggle.tsx",
+          "operation": "create",
+          "description": "Create a fixed-position Day/Night mood toggle UI (CSS/SVG shapes only; no external images/emoji), sized for touch, and styled to match the existing premium glass aesthetic. Use the shadcn-ui Button component to keep interaction/spacing consistent. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/public/assets/cani.mp4",
-          "operation": "create",
-          "description": "Add the provided `cani.mp4` file to the app’s static assets so it is available at runtime as `/assets/cani.mp4`."
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the new GlobalMoodToggle into the app shell so it renders on every page opposite the existing GlobalAudioToggle (top-left vs top-right) without impacting the 1→7 flow. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/GlobalAudioToggle.tsx",
+          "operation": "modify",
+          "description": "Refine the existing music toggle’s sizing and hover transitions to avoid any shrinking/bouncing (prefer transition-colors over transition-all) and ensure touch-friendly dimensions that match the new mood toggle. Use the shadcn-ui Button component as-is (do not edit anything under frontend/src/components/ui). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add small global utility classes for consistent fixed-toggle positioning/size on mobile/desktop (including safe spacing) to ensure both toggles remain within the viewport and do not overlap content."
         }
       ]
     },
     {
-      "id": "REQ-16",
-      "summary": "Update repo documentation/declared static asset list to reference cani.mp4 (not cani.mp3).",
+      "id": "REQ-18",
+      "summary": "Implement global Day (default) and Night mode styling with smooth crossfade transitions, using a single session-persisted global theme state that updates backgrounds, glass panels, and typography colors accessibly.",
       "acceptanceCriteria": [
-        "Any user-facing or developer-facing text in the repo that specifies the required audio asset name (for this microsite) refers to `cani.mp4` (not `cani.mp3`).",
-        "No user-facing text changes introduce non-English wording."
+        "Day mode is the default on first load.",
+        "Toggling mood updates the global look (background, panels, typography colors) across all pages immediately without navigation.",
+        "The theme transition animates smoothly (crossfade/soft transition) without flashes or harsh contrast jumps.",
+        "Cards/panels remain glassmorphic in both modes: Day = lighter/off-white; Night = slightly darker with soft blur, still readable.",
+        "All primary text remains legible in both modes (no low-contrast combinations)."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/allowed-static-assets.md",
+          "path": "frontend/src/state/moodStore.ts",
           "operation": "create",
-          "description": "Create/update a simple developer-facing static asset allowlist document for this microsite that explicitly lists `cani.mp4` as the required audio asset (and does not mention `cani.mp3`), keeping all wording in English."
+          "description": "Create a single global theme state (Day/Night) with session persistence (sessionStorage) and a simple toggle API that can be used across the app."
         },
         {
-          "path": "frontend/src/audio/GlobalAudioProvider.tsx",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Remove any remaining references or comments that mention `cani.mp3`, ensuring all in-repo text near the global audio implementation aligns with `cani.mp4`."
+          "description": "Implement smooth, app-wide theme crossfade: keep Day gradient as the base and add a Night gradient overlay (e.g., via a fixed pseudo-element/overlay) that transitions opacity for a premium crossfade. Update glass-panel styling to use theme-aware variables and include soft transitions for background/border/text to avoid flashing while maintaining readability."
+        },
+        {
+          "path": "frontend/src/components/GlassPanel.tsx",
+          "operation": "modify",
+          "description": "Ensure GlassPanel remains theme-adaptive by relying on the updated global .glass-panel styling (and, if needed, allow optional theme-related className pass-through patterns without changing the component’s public behavior)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Apply the global theme class (e.g., toggling the document/class-based dark mode) based on the mood store so the theme updates instantly across all pages without navigation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "summary": "Adapt global background effects for Day vs Night: keep hearts in both modes but make them softer/slower/dimmer at night; add subtle night stars/glow particles; keep Day sparkles warm and very subtle; ensure effects remain lightweight and never block interactions.",
+      "acceptanceCriteria": [
+        "In both modes, the background effects do not capture pointer events and do not interfere with clicking/scrolling.",
+        "Night mode visibly differs from Day mode via dimmer/slower hearts and star-like sparkles/particles.",
+        "Day mode sparkles remain warm-toned and subtle (no distracting brightness).",
+        "Animations remain smooth and premium (no jarring movement)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/FloatingHeartsBackground.tsx",
+          "operation": "modify",
+          "description": "Read the global mood state and render/parameterize effects per mode: Day = warm subtle sparkles; Night = dimmer/slower hearts plus additional star-like sparkles and soft glowing particles. Keep the background layer pointer-events-none and lightweight (no interaction blocking)."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add/adjust animation utilities for premium night ambience (e.g., slower floats, softer sparkle timing) and ensure the effects’ visual intensity remains subtle and accessible in both themes."
+        }
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "summary": "Add the emotional callback line once in the existing flow with soft serif styling, gentle fade-in, and theme-harmonized color.",
+      "acceptanceCriteria": [
+        "The exact line text is present once in the experience flow (not as a main headline).",
+        "The line uses a serif font, is visually smaller than the page’s main heading, and fades in gently when shown.",
+        "In Day mode the line appears in a rose-toned color; in Night mode it switches to soft off-white (or equivalent high-contrast pastel) while remaining readable.",
+        "The placement feels subtle (e.g., below main content within the card/panel), not competing with primary CTAs."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Page6FinalMessage.tsx",
+          "operation": "modify",
+          "description": "Insert the exact callback line once (subtle placement within the existing content card/panel, below primary message text) using serif styling, smaller typography than the heading, and a gentle fade-in when displayed."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add theme-aware utility styles for the callback line color (rose-toned in Day; soft off-white/pastel in Night) and a gentle fade-in variant suitable for a ‘quiet whisper’ effect."
+        }
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "summary": "On Page 7, add the closing send-off message centered above the replay button with fade-in + slow upward slide and a gentle glow.",
+      "acceptanceCriteria": [
+        "On Page 7, the closing message is displayed above the replay button, centered within the main content card/panel.",
+        "The message uses the exact wording and line break as provided.",
+        "The message animates in with a soft fade-in and slow upward slide and includes a gentle glow effect (not harsh/neon).",
+        "The new message does not cause layout overflow on mobile or desktop and does not push the replay button off-screen."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Page7Replay.tsx",
+          "operation": "modify",
+          "description": "Add the closing message exactly as provided (including line break) centered just above the existing “Visit My Rose Garden Again” button; apply a soft fade-in + slower slide-up animation and ensure the layout remains responsive without pushing the button off-screen."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add a slow slide-up + fade animation utility and a gentle text glow utility (subtle, non-neon) suitable for the Page 7 send-off message."
         }
       ]
     }

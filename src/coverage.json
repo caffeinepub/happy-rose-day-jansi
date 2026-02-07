@@ -1,48 +1,102 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-07T05:00:52.136Z",
+  "generatedAt": "2026-02-07T11:19:35.717Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 5,
+    "implemented": 5,
     "items": [
       {
-        "id": "REQ-15",
-        "summary": "Update the global audio implementation to load and play the provided audio file `cani.mp4` (instead of `cani.mp3`) so that music is audible when the user presses the Page 1 music start button or the global play/pause toggle.",
+        "id": "REQ-17",
+        "summary": "Add a global Day/Night Mood Toggle that is always visible across all 7 pages and is placed opposite the existing global music toggle (e.g., mood toggle on top-left, music toggle on top-right) so the two controls visually balance each other.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/audio/GlobalAudioProvider.tsx",
-          "frontend/public/assets/cani.mp4"
+          "frontend/src/components/GlobalMoodToggle.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/GlobalAudioToggle.tsx",
+          "frontend/src/index.css"
         ],
         "matchedFiles": [
-          "frontend/src/audio/GlobalAudioProvider.tsx"
+          "frontend/src/components/GlobalMoodToggle.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/GlobalAudioToggle.tsx",
+          "frontend/src/index.css"
         ]
       },
       {
-        "id": "REQ-16",
-        "summary": "Ensure the project’s documented/declared allowed static asset list reflects `cani.mp4` as the required audio asset (replacing references to `cani.mp3`) wherever the app’s constraints or copy mention the audio filename.",
+        "id": "REQ-18",
+        "summary": "Implement Day (default) and Night mode styling as a smooth crossfade theme transition across the entire app, using a single global theme state (persisted for the session) that updates the page background gradients, glassmorphism panel styling, and text colors while maintaining readability and accessibility.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/public/assets/allowed-static-assets.md",
-          "frontend/src/audio/GlobalAudioProvider.tsx"
+          "frontend/src/state/moodStore.ts",
+          "frontend/src/index.css",
+          "frontend/src/components/GlassPanel.tsx",
+          "frontend/src/App.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/audio/GlobalAudioProvider.tsx"
+          "frontend/src/state/moodStore.ts",
+          "frontend/src/index.css",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-19",
+        "summary": "Update the global background effects to adapt to Day vs Night mode: keep floating hearts in both modes, but in Night mode make them softer, slower, and slightly dimmer; add subtle star-like sparkles and soft glowing particles in Night mode; keep Day mode sparkles warm-toned and very subtle; ensure effects remain lightweight and never block interactions.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/FloatingHeartsBackground.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/FloatingHeartsBackground.tsx",
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-20",
+        "summary": "Add the subtle emotional callback line somewhere within the existing flow (choose a fitting location such as Page 3 Bouquet Builder or Page 6 Final Message) with soft serif styling, smaller than main headings, and a gentle fade-in when the section appears: “Somewhere in this little garden, Jansi, there’s a piece of my heart.” The line’s color must harmonize with the current mood (rose-toned in Day mode; soft off-white in Night mode).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Page6FinalMessage.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Page6FinalMessage.tsx",
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-21",
+        "summary": "On Page 7 (Replay / Ending), add the closing send-off message centered just above the existing “Visit My Rose Garden Again” button, with soft fade-in + slow upward slide animation and a gentle glow behind the text: “If today made you smile even a little,\\nthen it was worth making.”",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Page7Replay.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Page7Replay.tsx",
+          "frontend/src/index.css"
         ]
       }
     ]
   },
   "changedFiles": [
     "build-request.json",
-    "build-template/README.md",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/audio/GlobalAudioProvider.tsx",
+    "frontend/src/App.tsx",
+    "frontend/src/components/FloatingHeartsBackground.tsx",
+    "frontend/src/components/GlobalAudioToggle.tsx",
+    "frontend/src/components/GlobalMoodToggle.tsx",
+    "frontend/src/index.css",
+    "frontend/src/pages/Page6FinalMessage.tsx",
+    "frontend/src/pages/Page7Replay.tsx",
+    "frontend/src/state/moodStore.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

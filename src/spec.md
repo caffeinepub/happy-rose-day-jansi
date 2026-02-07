@@ -1,12 +1,13 @@
 # Specification
 
 ## Summary
-**Goal:** Fix global background music by switching the runtime audio source from `cani.mp3` to the provided `cani.mp4`, ensuring user-initiated playback works from both Page 1 and the global play/pause control.
+**Goal:** Add a global Day/Night mood toggle and mood-aware visual refinements, plus two new emotional text moments in the existing 7-page Rose Day microsite.
 
 **Planned changes:**
-- Update the global audio implementation to load `/assets/cani.mp4` and remove any runtime references to `/assets/cani.mp3`.
-- Ensure the Page 1 “Let the roses sing for us 🎶” button starts audible playback on desktop Chrome/Edge and remains user-initiated (no autoplay).
-- Ensure the persistent global play/pause toggle correctly starts/pauses audible playback, reflects the correct visual state, and does not restart audio during page navigation once started.
-- Replace any documented/declared/static-asset-list references to `cani.mp3` with `cani.mp4` in user- or developer-facing repo text.
+- Add an always-visible Day/Night Mood Toggle across all 7 pages, positioned opposite the existing global music toggle and kept touch-friendly on mobile without overlapping content or causing hover/jump effects.
+- Implement a single global theme state (session-persisted) with Day (default) and Night styling, including smooth crossfade transitions for backgrounds, glassmorphism panels, and text colors while maintaining readability/accessibility.
+- Update global background effects to adapt by mood: keep floating hearts in both modes; in Night mode make hearts softer/slower/dimmer and add subtle star-like sparkles/soft glowing particles; keep Day sparkles warm-toned and very subtle; ensure effects are lightweight and never block interactions.
+- Add the subtle serif callback line once in the existing flow with a gentle fade-in: “Somewhere in this little garden, Jansi, there’s a piece of my heart.” with mood-harmonized color (rose-toned in Day, soft off-white in Night).
+- On Page 7 (Replay/Ending), add the centered closing send-off message just above “Visit My Rose Garden Again” with soft fade-in + slow upward slide and a gentle glow: “If today made you smile even a little,\nthen it was worth making.”
 
-**User-visible outcome:** On desktop Chrome/Edge, clicking the Page 1 music start button or the global play/pause toggle produces audible music using `cani.mp4`, and playback persists across page navigation until the user pauses it.
+**User-visible outcome:** Visitors can toggle a premium Day/Night mood across the entire experience (with smooth theme/effects changes), see a subtle romantic callback line during the flow, and receive a new animated closing message on the replay/ending page above the replay button.
