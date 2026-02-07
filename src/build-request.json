@@ -1,0 +1,76 @@
+{
+  "kind": "build_request",
+  "title": "Fix global background music by switching from cani.mp3 to cani.mp4",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-15",
+      "text": "Update the global audio implementation to load and play the provided audio file `cani.mp4` (instead of `cani.mp3`) so that music is audible when the user presses the Page 1 music start button or the global play/pause toggle.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-8",
+          "msg-10",
+          "msg-12"
+        ],
+        "quotes": [
+          "music is not working  ,other things is fine",
+          "slient everywhere and not hearing anyhthing",
+          "cani.mp4",
+          "yes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The app requests `/assets/cani.mp4` for playback (no references to `/assets/cani.mp3` remain in the runtime audio path).",
+        "On desktop (laptop) Chrome/Edge, clicking “Let the roses sing for us 🎶” on Page 1 starts audible playback.",
+        "Clicking the fixed global audio toggle starts/pauses audible playback and updates its visual state accordingly.",
+        "Audio remains user-initiated only (no autoplay on initial page load or after replay).",
+        "Audio continues seamlessly across page navigation once started (no restart on page changes unless the user pauses/plays)."
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Ensure the project’s documented/declared allowed static asset list reflects `cani.mp4` as the required audio asset (replacing references to `cani.mp3`) wherever the app’s constraints or copy mention the audio filename.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-10"
+        ],
+        "quotes": [
+          "cani.mp4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Any user-facing or developer-facing text in the repo that specifies the required audio asset name (for this microsite) refers to `cani.mp4` (not `cani.mp3`).",
+        "No user-facing text changes introduce non-English wording."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not introduce audio autoplay; playback must begin only after an explicit user gesture.",
+    "Keep the existing global audio UX (persistent play/pause control available across all pages).",
+    "Do not add or depend on any external images or audio sources; use the provided `/assets/cani.mp4` file.",
+    "Do not modify files under the listed immutable frontend paths (compose instead of editing them).",
+    "Backend remains a single Motoko actor; no backend changes are required for this fix."
+  ],
+  "nonGoals": [
+    "Adding additional audio tracks, playlists, or volume sliders.",
+    "Implementing third-party audio streaming, analytics, or any external media hosting.",
+    "Changing the 7-page microsite flow, page content, or visual theme beyond what is necessary to make audio work."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

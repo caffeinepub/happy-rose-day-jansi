@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Build a premium, soft, dreamy romantic interactive microsite titled “Happy Rose Day, Jansi” with 7 pages, glassmorphism UI, smooth cinematic animations, floating CSS/SVG hearts, responsive layouts, and global user-initiated background music (cani.mp4). Includes a roses meaning gallery (now with an added pink rose), bouquet builder using flower.png, playful YES/NO interaction, music page, final message, and replay flow; uses only provided PNG/MP4 assets.",
+  "architectural_notes": [
+    "Global audio must be user-initiated (no autoplay) and controlled via a persistent play/pause UI visible on all pages.",
+    "Background hearts/sparkles must be created with pure CSS/SVG (no emoji hearts, no external heart images).",
+    "All animations/transitions: gentle fades/slide-ups, smooth cinematic motion; hover effects are soft glow only; no bounce/shrink effects.",
+    "Audio asset to use is `cani.mp4` (not `cani.mp3`); keep the same user-initiated playback + persistent controls requirements."
+  ],
+  "known_issues": [
+    "Audio playback is silent everywhere because the project was configured for `cani.mp3` but the provided file is `cani.mp4`."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-the-app-wide-visual-theme-for-a-premium-soft-dreamy-romantic-canva-style-microsite-blush-pink-lavender-gradient-backgrounds-off-white-glassmorphism-panels-rounded-corners-subtle-shadows-no-harsh-borders-elegant-serif-headings-clean-sans-body-deep-rose-soft-charcoal-off-white-text-colors-and-gentle-cinematic-motion-fade-slow-slide-up-smooth-transitions-do-not-use-childish-bounce-shrink-effects-ensure-consistent-styling-across-all-pages-and-components",
+      "title": "Create the app-wide visual theme for a premium, soft, dreamy, romantic “Canva-style” microsite: blush-pink + lavender gradient backgrounds, off-white glassmorphism panels, rounded corners, subtle shadows (no harsh borders), elegant serif headings + clean sans body, deep-rose/soft-charcoal/off-white text colors, and gentle cinematic motion (fade/slow slide-up/smooth transitions). Do not use childish bounce/shrink effects. Ensure consistent styling across all pages and components.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-7-page-linear-user-friendly-navigation-flow-for-the-microsite-page-1-page-2-page-3-page-4-page-5-page-6-page-7-with-premium-next-buttons-where-specified-and-a-replay-action-on-page-7-that-restarts-the-experience-back-to-page-1-ensure-transitions-between-pages-are-smooth-and-do-not-cause-layout-overflow-on-mobile-or-desktop",
+      "title": "Implement a 7-page, linear, user-friendly navigation flow for the microsite (Page 1 → Page 2 → Page 3 → Page 4 → Page 5 → Page 6 → Page 7) with premium “Next” buttons where specified and a replay action on Page 7 that restarts the experience back to Page 1. Ensure transitions between pages are smooth and do not cause layout overflow on mobile or desktop.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-global-background-effects-across-pages-floating-heart-shapes-created-using-pure-css-svg-no-emoji-hearts-no-external-heart-images-plus-subtle-low-opacity-heart-sparkles-effects-must-be-lightweight-not-block-content-interaction-and-remain-responsive",
+      "title": "Add global background effects across pages: floating heart shapes created using pure CSS/SVG (no emoji hearts, no external heart images) plus subtle low-opacity heart sparkles. Effects must be lightweight, not block content interaction, and remain responsive.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-global-audio-playback-using-the-provided-file-cani-mp3-with-1-a-visible-elegant-play-pause-toggle-available-on-all-pages-and-2-a-hard-guarantee-that-audio-never-autoplays-playback-must-start-only-after-a-user-interaction-e-g-tapping-a-play-button-audio-should-continue-seamlessly-across-page-navigation-once-started",
+      "title": "Implement global audio playback using the provided file `cani.mp3` with (1) a visible, elegant play/pause toggle available on all pages, and (2) a hard guarantee that audio never autoplays—playback must start only after a user interaction (e.g., tapping a play button). Audio should continue seamlessly across page navigation once started.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-page-1-welcome-landing-as-a-full-screen-blush-lavender-gradient-with-a-centered-premium-glassmorphism-card-containing-title-text-happy-rose-day-jansi-the-provided-subheading-a-primary-button-enter-my-rose-garden-and-a-separate-music-start-button-labeled-let-the-roses-sing-for-us-that-starts-cani-mp3-include-a-soft-intro-overlay-reading-preparing-something-special-for-you-then-animate-in-title-fade-subheading-gentle-slide-up-buttons-appearing-last-with-subtle-glow",
+      "title": "Build Page 1 (Welcome / Landing) as a full-screen blush–lavender gradient with a centered premium glassmorphism card containing: title text “Happy Rose Day, Jansi 🌹”, the provided subheading, a primary button “Enter My Rose Garden”, and a separate music start button labeled “Let the roses sing for us 🎶” that starts `cani.mp3`. Include a soft intro overlay reading “Preparing something special for you…” then animate in: title fade, subheading gentle slide-up, buttons appearing last with subtle glow.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-page-2-meaning-of-roses-as-a-vertically-scrollable-gallery-with-glassmorphism-cards-using-only-these-pngs-red-png-purple-png-white-png-yellow-png-peach-png-pink-png-desktop-layout-is-a-2-column-grid-2-columns-3-rows-mobile-is-a-single-column-stack-each-card-must-display-the-rose-with-object-fit-contain-no-cropping-distortion-and-on-click-tap-reveal-a-soft-glassmorphism-message-panel-that-fades-slides-in-below-that-specific-rose-message-text-color-should-match-the-rose-color-add-soft-glow-hover-only-include-a-premium-next-button-at-the-bottom-center-to-go-to-page-3",
+      "title": "Build Page 2 (Meaning of Roses) as a vertically scrollable gallery with glassmorphism cards using ONLY these PNGs: `red.png`, `purple.png`, `white.png`, `yellow.png`, `peach.png`, `pink.png`. Desktop layout is a 2-column grid (2 columns × 3 rows); mobile is a single-column stack. Each card must display the rose with `object-fit: contain` (no cropping/distortion) and on click/tap reveal a soft glassmorphism message panel that fades + slides in below that specific rose. Message text color should match the rose color. Add soft glow hover only. Include a premium Next button at the bottom center to go to Page 3.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-missing-one-line-message-for-the-pink-rose-card-pink-png-on-page-2-with-pink-toned-text-consistent-in-tone-with-the-other-messages",
+      "title": "Add the missing one-line message for the Pink rose card (`pink.png`) on Page 2 (with pink-toned text), consistent in tone with the other messages.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-page-3-virtual-bouquet-builder-with-a-centered-bouquet-canvas-area-and-two-buttons-add-a-rose-and-wrap-the-bouquet-when-add-a-rose-is-pressed-animate-roses-into-a-bouquet-formation-and-keep-the-bouquet-gently-floating-when-the-bouquet-is-wrapped-show-the-provided-flower-png-image-and-the-text-this-bouquet-is-for-you-only-after-wrapping-reveal-a-next-button-to-go-to-page-4-use-flower-png-as-the-bouquet-graphic-per-user-instruction-no-other-rose-image-sources",
+      "title": "Build Page 3 (Virtual Bouquet Builder) with a centered bouquet canvas area and two buttons: “Add a Rose” and “Wrap the Bouquet”. When “Add a Rose” is pressed, animate roses into a bouquet formation and keep the bouquet gently floating. When the bouquet is wrapped, show the provided `flower.png` image and the text “This bouquet is for you”. Only after wrapping, reveal a Next button to go to Page 4. Use `flower.png` as the bouquet graphic per user instruction (no other rose image sources).",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-page-4-accept-my-flower-as-a-centered-romantic-glassmorphism-card-that-shows-one-png-at-the-top-the-question-will-you-accept-this-flower-from-me-and-two-buttons-yes-and-no-yes-stays-stationary-with-soft-glow-on-hover-no-moves-smoothly-to-random-nearby-positions-on-hover-playful-but-not-jarring-must-remain-within-viewport-and-remain-tappable-on-mobile-on-yes-click-replace-content-to-show-second-png-show-the-text-thank-you-and-trigger-a-soft-heart-confetti-animation-that-follows-gravity",
+      "title": "Build Page 4 (Accept My Flower?) as a centered romantic glassmorphism card that shows `one.png` at the top, the question “Will you accept this flower from me?”, and two buttons YES and NO. YES stays stationary with soft glow on hover. NO moves smoothly to random nearby positions on hover (playful but not jarring; must remain within viewport and remain tappable on mobile). On YES click: replace content to show `second.png`, show the text “Thank you 🤍”, and trigger a soft heart confetti animation that follows gravity.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-page-5-music-page-that-continues-the-global-cani-mp3-playback-state-if-started-and-displays-the-elegant-global-play-pause-toggle-plus-the-text-some-songs-feel-like-they-were-written-for-moments-like-this-include-a-next-button-to-proceed-to-page-6",
+      "title": "Build Page 5 (Music Page) that continues the global `cani.mp3` playback state (if started) and displays the elegant global play/pause toggle plus the text: “Some songs feel like they were written for moments like this.” Include a Next button to proceed to Page 6.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-page-6-final-rose-day-message-as-a-centered-premium-romantic-note-card-with-the-exact-multi-line-message-provided-by-the-user-keep-the-floating-hearts-subtle-sparkles-background-effects-active",
+      "title": "Build Page 6 (Final Rose Day Message) as a centered premium romantic note card with the exact multi-line message provided by the user. Keep the floating hearts + subtle sparkles background effects active.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-page-7-replay-ending-as-a-calm-closing-screen-with-bouquet-and-floating-hearts-and-a-button-visit-my-rose-garden-again-that-restarts-the-experience-back-to-page-1-including-resetting-page-local-ui-states-such-as-bouquet-builder-progression-and-page-4-yes-state-while-not-forcing-music-autoplay",
+      "title": "Build Page 7 (Replay / Ending) as a calm closing screen with bouquet and floating hearts, and a button “Visit My Rose Garden Again” that restarts the experience back to Page 1 (including resetting page-local UI states such as bouquet builder progression and Page 4 YES state, while not forcing music autoplay).",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-all-provided-static-assets-are-used-directly-no-placeholders-and-png-transparency-is-preserved-the-app-must-use-only-these-image-assets-where-specified-flower-png-one-png-second-png-red-png-purple-png-white-png-yellow-png-peach-png-pink-png-and-the-audio-asset-cani-mp3-no-external-images",
+      "title": "Ensure all provided static assets are used directly (no placeholders) and PNG transparency is preserved. The app must use only these image assets where specified: `flower.png`, `one.png`, `second.png`, `red.png`, `purple.png`, `white.png`, `yellow.png`, `peach.png`, `pink.png`, and the audio asset `cani.mp3` (no external images).",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-meet-the-responsiveness-requirements-mobile-first-vertical-stacking-where-applicable-touch-friendly-button-sizes-balanced-centered-desktop-layouts-and-no-overflow-issues-add-swipe-gestures-only-where-they-make-sense-for-the-flow-and-do-not-conflict-with-vertical-scrolling-on-page-2",
+      "title": "Meet the responsiveness requirements: mobile-first vertical stacking where applicable, touch-friendly button sizes, balanced centered desktop layouts, and no overflow issues. Add swipe gestures only where they make sense for the flow (and do not conflict with vertical scrolling on Page 2).",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-global-audio-implementation-to-load-and-play-the-provided-audio-file-cani-mp4-instead-of-cani-mp3-so-that-music-is-audible-when-the-user-presses-the-page-1-music-start-button-or-the-global-play-pause-toggle",
+      "title": "Update the global audio implementation to load and play the provided audio file `cani.mp4` (instead of `cani.mp3`) so that music is audible when the user presses the Page 1 music start button or the global play/pause toggle.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-project-s-documented-declared-allowed-static-asset-list-reflects-cani-mp4-as-the-required-audio-asset-replacing-references-to-cani-mp3-wherever-the-app-s-constraints-or-copy-mention-the-audio-filename",
+      "title": "Ensure the project’s documented/declared allowed static asset list reflects `cani.mp4` as the required audio asset (replacing references to `cani.mp3`) wherever the app’s constraints or copy mention the audio filename.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create 7-page romantic microsite “Happy Rose Day, Jansi” with premium dreamy glassmorphism design, smooth transitions, floating CSS/SVG hearts/sparkles, and full mobile/desktop responsiveness",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Implement global background audio (cani.mp3) with visible play/pause toggle on all pages; must not autoplay (start only on user interaction)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Page 1 landing: intro overlay, title/subheading animations, Enter button, and music start button that initiates cani.mp3",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Page 2 rose meanings gallery: vertical scroll grid (desktop 2x3, mobile 1-col) using PNGs with object-fit contain; click reveals glassmorphism message panel; includes red, purple, white, yellow, peach, and pink rose with one-line messages",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Page 3 virtual bouquet builder: bouquet canvas with “Add a Rose” and “Wrap the Bouquet”; animate roses into formation; after completion show flower.png and text; reveal Next button after wrap",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Page 4 accept flower: show one.png, YES/NO buttons (NO moves smoothly on hover); YES shows second.png, thank-you text, and heart confetti with gravity",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Pages 5–7: music page with continuing audio + toggle + text, final message page with hearts/sparkles, and replay/ending page that restarts to Page 1",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Fix global background audio by updating the app to load and play cani.mp4 (not cani.mp3) with the existing user-initiated play/pause controls",
+      "reqIds": [],
+      "status": "in_progress"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Happy Rose Day, Jansi",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

@@ -1,0 +1,51 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T05:00:52.136Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 2,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-15",
+        "summary": "Update the global audio implementation to load and play the provided audio file `cani.mp4` (instead of `cani.mp3`) so that music is audible when the user presses the Page 1 music start button or the global play/pause toggle.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/audio/GlobalAudioProvider.tsx",
+          "frontend/public/assets/cani.mp4"
+        ],
+        "matchedFiles": [
+          "frontend/src/audio/GlobalAudioProvider.tsx"
+        ]
+      },
+      {
+        "id": "REQ-16",
+        "summary": "Ensure the project’s documented/declared allowed static asset list reflects `cani.mp4` as the required audio asset (replacing references to `cani.mp3`) wherever the app’s constraints or copy mention the audio filename.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/allowed-static-assets.md",
+          "frontend/src/audio/GlobalAudioProvider.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/audio/GlobalAudioProvider.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/audio/GlobalAudioProvider.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

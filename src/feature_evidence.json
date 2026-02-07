@@ -1,0 +1,41 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-the-global-audio-implementation-to-load-and-play-the-provided-audio-file-cani-mp4-instead-of-cani-mp3-so-that-music-is-audible-when-the-user-presses-the-page-1-music-start-button-or-the-global-play-pause-toggle",
+      "featureTitle": "Update the global audio implementation to load and play the provided audio file `cani.mp4` (instead of `cani.mp3`) so that music is audible when the user presses the Page 1 music start button or the global play/pause toggle.",
+      "files": [
+        "frontend/src/audio/GlobalAudioProvider.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-15"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-project-s-documented-declared-allowed-static-asset-list-reflects-cani-mp4-as-the-required-audio-asset-replacing-references-to-cani-mp3-wherever-the-app-s-constraints-or-copy-mention-the-audio-filename",
+      "featureTitle": "Ensure the project’s documented/declared allowed static asset list reflects `cani.mp4` as the required audio asset (replacing references to `cani.mp3`) wherever the app’s constraints or copy mention the audio filename.",
+      "files": [
+        "frontend/src/audio/GlobalAudioProvider.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-16"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

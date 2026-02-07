@@ -1,0 +1,14 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T05:00:52.134Z",
+  "summary": "Diff updates the global audio provider to load `/assets/cani.mp4` and updates internal repo summary/state text to reference `cani.mp4`. No clear evidence of remaining `cani.mp3` runtime references is shown beyond the modified provider file; no extra unrequested features are clearly introduced.",
+  "missing_requirements": [],
+  "hallucinated_features": [],
+  "confidence": 0.64,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/audio/GlobalAudioProvider.tsx",
+    "project_state.json"
+  ]
+}

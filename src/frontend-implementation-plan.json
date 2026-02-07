@@ -1,0 +1,50 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fix global background music by switching from cani.mp3 to cani.mp4",
+  "requirements": [
+    {
+      "id": "REQ-15",
+      "summary": "Switch global audio source to /assets/cani.mp4 and ensure user-initiated, persistent play/pause works across navigation.",
+      "acceptanceCriteria": [
+        "The app requests `/assets/cani.mp4` for playback (no references to `/assets/cani.mp3` remain in the runtime audio path).",
+        "On desktop (laptop) Chrome/Edge, clicking “Let the roses sing for us 🎶” on Page 1 starts audible playback.",
+        "Clicking the fixed global audio toggle starts/pauses audible playback and updates its visual state accordingly.",
+        "Audio remains user-initiated only (no autoplay on initial page load or after replay).",
+        "Audio continues seamlessly across page navigation once started (no restart on page changes unless the user pauses/plays)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/audio/GlobalAudioProvider.tsx",
+          "operation": "modify",
+          "description": "Update the constructed Audio element to load `/assets/cani.mp4` instead of `/assets/cani.mp3`, and tighten playback state syncing (e.g., reflect actual media play/pause events and handle failed play promises) while keeping playback strictly user-initiated and the Audio instance persistent for seamless cross-page playback."
+        },
+        {
+          "path": "frontend/public/assets/cani.mp4",
+          "operation": "create",
+          "description": "Add the provided `cani.mp4` file to the app’s static assets so it is available at runtime as `/assets/cani.mp4`."
+        }
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "summary": "Update repo documentation/declared static asset list to reference cani.mp4 (not cani.mp3).",
+      "acceptanceCriteria": [
+        "Any user-facing or developer-facing text in the repo that specifies the required audio asset name (for this microsite) refers to `cani.mp4` (not `cani.mp3`).",
+        "No user-facing text changes introduce non-English wording."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/allowed-static-assets.md",
+          "operation": "create",
+          "description": "Create/update a simple developer-facing static asset allowlist document for this microsite that explicitly lists `cani.mp4` as the required audio asset (and does not mention `cani.mp3`), keeping all wording in English."
+        },
+        {
+          "path": "frontend/src/audio/GlobalAudioProvider.tsx",
+          "operation": "modify",
+          "description": "Remove any remaining references or comments that mention `cani.mp3`, ensuring all in-repo text near the global audio implementation aligns with `cani.mp4`."
+        }
+      ]
+    }
+  ]
+}

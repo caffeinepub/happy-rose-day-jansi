@@ -1,0 +1,19 @@
+{
+  "frontend/src/App.tsx": "Main app component that wraps the microsite in GlobalAudioProvider, renders FloatingHeartsBackground and GlobalAudioToggle globally, and switches between 7 pages based on Zustand flow state.",
+  "frontend/src/state/micrositeFlowStore.ts": "Zustand store managing current page number, bouquet/flower acceptance states, and navigation actions (next, goTo, replay with state resets).",
+  "frontend/src/audio/GlobalAudioProvider.tsx": "React context provider that owns a single persistent HTMLAudioElement for cani.mp4, exposes play/pause/toggle methods and isPlaying state, enforces user-initiated playback with improved state syncing via native media events (play, pause, ended), and handles failed play promises gracefully.",
+  "frontend/src/components/GlobalAudioToggle.tsx": "Fixed-position music toggle button (top-right) that uses GlobalAudioProvider to control playback and displays Music/VolumeX icons with romantic styling.",
+  "frontend/src/components/FloatingHeartsBackground.tsx": "Fixed background layer rendering multiple animated SVG heart shapes with gentle float animations and sparkles at low opacity, using pointer-events-none to avoid blocking interactions.",
+  "frontend/src/components/GlassPanel.tsx": "Reusable glassmorphism panel component with off-white translucency, rounded corners, subtle shadow, and backdrop blur that now accepts all standard HTML div attributes including onClick.",
+  "frontend/src/components/HeartConfetti.tsx": "Confetti animation component that renders 30 SVG hearts falling with gravity-like motion and random rotation for the Page 4 YES interaction.",
+  "frontend/src/pages/Page1Welcome.tsx": "Welcome/landing page with intro overlay, animated title/subheading, \"Enter My Rose Garden\" button (advances to Page 2), and \"Let the roses sing for us\" button (starts music).",
+  "frontend/src/pages/Page2MeaningOfRoses.tsx": "Rose meanings gallery displaying 6 rose cards (red, purple, white, yellow, peach, pink) in responsive grid; clicking a card reveals its message panel with color-matched text.",
+  "frontend/src/pages/Page3BouquetBuilder.tsx": "Bouquet builder page with \"Add a Rose\" and \"Wrap the Bouquet\" buttons; roses animate into formation, then flower.png is revealed with text; Next button appears after wrapping.",
+  "frontend/src/pages/Page4AcceptMyFlower.tsx": "Accept flower interaction page showing one.png, YES/NO buttons (NO moves on hover), and on YES shows second.png with thank-you text and heart confetti before advancing.",
+  "frontend/src/pages/Page5Music.tsx": "Music page displaying a music icon, the text \"Some songs feel like they were written for moments like this\", and a Next button; relies on global audio toggle.",
+  "frontend/src/pages/Page6FinalMessage.tsx": "Final message page with centered romantic note card displaying the exact multi-line message with premium typography and floating hearts background.",
+  "frontend/src/pages/Page7Replay.tsx": "Replay/ending page with flower.png, closing text, and \"Visit My Rose Garden Again\" button that calls replay() to reset state and return to Page 1.",
+  "frontend/src/index.css": "Global styles with OKLCH romantic color system (blush-pink + lavender gradient), glassmorphism utilities using direct CSS properties instead of @apply, elegant serif/sans typography, and gentle animation keyframes.",
+  "frontend/tailwind.config.js": "Tailwind config extended with complete rose and pink color scales (50-900), romantic color tokens (blush, lavender, charcoal, off-white), custom fonts (Playfair Display serif, Inter sans), rounded corners, glow shadows, and animation utilities.",
+  "frontend/src/lib/utils.ts": "Utility function combining clsx and tailwind-merge for conditional className composition."
+}
